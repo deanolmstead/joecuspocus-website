@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-pt-24 scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoecusPocus - Party Entertainment</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              'soft-blossom': {
+                50: '#f6eef0',
+                100: '#eddee2',
+                200: '#dbbdc5',
+                300: '#c99ca8',
+                400: '#b87a8b',
+                500: '#a6596e',
+                600: '#854758',
+                700: '#633642',
+                800: '#42242c',
+                900: '#211216',
+                950: '#170c0f',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+              'float': 'float 2s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0) scale(1.1)' },
+                '50%': { transform: 'translateY(-8px) scale(1.1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+  </head>
+  <body class="bg-soft-blossom-50 text-soft-blossom-900 antialiased selection:bg-soft-blossom-200">
+
+    <!-- Navbar -->
+    <nav class="bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-white/20 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <div class="flex-shrink-0 flex items-center gap-2">
+            <svg class="w-7 h-7 text-soft-blossom-700 hover:text-soft-blossom-500 hover:animate-float hover:scale-125 transition-all duration-300 cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.5 2 6 5 6 8.5C6 12 8 14 10 16C11 17 11.5 18 11.5 19.5V20C11.5 20.5 11.7 21 12 21C12.3 21 12.5 20.5 12.5 20V19.5C12.5 18 13 17 14 16C16 14 18 12 18 8.5C18 5 15.5 2 12 2Z" />
+              <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="text-2xl font-bold text-soft-blossom-700 tracking-tight">JoecusPocus</span>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="text-soft-blossom-700 hover:text-soft-blossom-500 font-medium transition-colors">About</a>
+            <a href="#services" class="text-soft-blossom-700 hover:text-soft-blossom-500 font-medium transition-colors">Entertainment</a>
+            <a href="#gallery" class="text-soft-blossom-700 hover:text-soft-blossom-500 font-medium transition-colors">Gallery</a>
+            <div class="flex items-center gap-3">
+              <a href="https://www.facebook.com/joecuspocusfresno/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-600 hover:text-white bg-soft-blossom-100 hover:bg-soft-blossom-600 transition-all p-2 rounded-full">
+                <i data-lucide="facebook" class="w-4 h-4"></i>
+              </a>
+              <a href="https://www.instagram.com/captainwoot_/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-600 hover:text-white bg-soft-blossom-100 hover:bg-soft-blossom-600 transition-all p-2 rounded-full">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <a href="tel:+15592897954" class="bg-soft-blossom-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-soft-blossom-500 transition-all shadow-md flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <span>Call (559) 289-7954</span>
+            </a>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-soft-blossom-800 p-2">
+              <i data-lucide="menu" class="w-7 h-7" id="menu-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-soft-blossom-200 shadow-xl">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a href="#about" class="block px-3 py-3 text-soft-blossom-800 hover:bg-soft-blossom-50 rounded-md font-medium mobile-link">About</a>
+          <a href="#services" class="block px-3 py-3 text-soft-blossom-800 hover:bg-soft-blossom-50 rounded-md font-medium mobile-link">Entertainment</a>
+          <a href="#gallery" class="block px-3 py-3 text-soft-blossom-800 hover:bg-soft-blossom-50 rounded-md font-medium mobile-link">Gallery</a>
+          <div class="flex justify-center gap-4 py-3">
+            <a href="https://www.facebook.com/joecuspocusfresno/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-600 hover:text-white bg-soft-blossom-100 hover:bg-soft-blossom-600 transition-all p-2.5 rounded-full">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a href="https://www.instagram.com/captainwoot_/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-600 hover:text-white bg-soft-blossom-100 hover:bg-soft-blossom-600 transition-all p-2.5 rounded-full">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+          </div>
+          <div class="mt-4">
+             <a href="tel:+15592897954" class="block w-full text-center bg-soft-blossom-600 text-white px-4 py-3 rounded-md font-bold">
+               Call Now
+             </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow">
+
+      <!-- Hero -->
+      <div class="relative bg-soft-blossom-900 h-[600px] md:h-[700px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <img
+            src="images/hero.jpg"
+            alt="JoecusPocus balloon column with bubbles at park event"
+            class="w-full h-full object-cover opacity-70"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-soft-blossom-900/60 to-soft-blossom-800/35 mix-blend-multiply"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+            Balloon Animals, <br class="hidden md:block"/>
+            360 Photo Booth, Bubble <br class="hidden md:block"/>
+            Fun For The Central Valley
+          </h1>
+          <p class="text-lg md:text-xl text-soft-blossom-100 mb-10 max-w-3xl mx-auto font-light">
+            Creating joy at birthday parties, wedding receptions, and major events.
+            Making memories that float above the rest.
+          </p>
+          <a
+            href="tel:+15592897954"
+            class="inline-flex items-center gap-2 bg-soft-blossom-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-soft-blossom-500 transition-all shadow-md"
+          >
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            <span>Call (559) 289-7954</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <section id="about" class="bg-soft-blossom-600 py-16 md:py-20 text-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div class="order-2 lg:order-1">
+              <h2 class="text-3xl md:text-4xl font-bold mb-6">I Bring the Party to You</h2>
+              <div class="space-y-6 text-soft-blossom-50 leading-relaxed">
+                <p>
+                  JoecusPocus has been creating joy at birthday parties, wedding receptions and major events for five years now. The company is basically me, Joe, who can arrive with my balloon animal friends for your kids.
+                </p>
+                <p>
+                  But not just that! I can and will bring a photo booth for your memories, a foam party for the summertime, and oodles of bubbles – big and small – to decorate your atmosphere. No extra charge.
+                </p>
+                <p>
+                  There is also the 360 Photo Booth that is either an added charge or an event unto itself. People love it!
+                </p>
+                <p>
+                  I work closely with Fresno Fancy Faces so if you are looking for face painting as well, just let me know! Also, please book well in advance because I and other balloon people get very busy but I will be happy to help you find someone if you get stuck. JoecusPocus is available for booking at <a href="tel:+15592897954" class="inline-flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded-full text-sm font-medium transition-all align-baseline"><i data-lucide="phone" class="w-3.5 h-3.5"></i><span>(559) 289-7954</span></a>
+                </p>
+              </div>
+            </div>
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+              <img
+                src="images/about.jpg"
+                alt="Joe with balloon creations"
+                class="rounded-xl shadow-lg w-full max-w-sm lg:max-w-md object-cover aspect-square ring-[10px] ring-soft-blossom-400/40 transition-transform hover:scale-[1.03] duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="py-24 bg-soft-blossom-50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-soft-blossom-700">Entertainment Options</h2>
+            <p class="mt-4 text-soft-blossom-600 max-w-2xl mx-auto">We offer a variety of entertainment options to make your event unforgettable.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <!-- Service 1 -->
+            <div class="flex flex-col items-center text-center group">
+              <div class="relative mb-6">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="images/balloon_circle_650x650.png" alt="Balloon Sculptures" class="w-full h-full object-cover"/>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-soft-blossom-700 mb-3">Balloon Sculptures</h3>
+              <p class="text-sm text-soft-blossom-700 leading-relaxed mb-4 px-2">
+                Custom balloon creations that bring your favorite characters and animals to life. Perfect for kids and the young at heart.
+              </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="flex flex-col items-center text-center group">
+              <div class="relative mb-6">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="images/photo_booth_650x650.png" alt="360 Photo Booth" class="w-full h-full object-cover"/>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-soft-blossom-700 mb-3">360 Photo Booth</h3>
+              <p class="text-sm text-soft-blossom-700 leading-relaxed mb-4 px-2">
+                Capture every angle of the fun with our state-of-the-art 360° video booth experience. A hit at weddings and parties!
+              </p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="flex flex-col items-center text-center group">
+              <div class="relative mb-6">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="images/bubble_circle_650x650.png" alt="Bubble Fun" class="w-full h-full object-cover"/>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-soft-blossom-700 mb-3">Bubble Fun</h3>
+              <p class="text-sm text-soft-blossom-700 leading-relaxed mb-4 px-2">
+                Magical bubble experiences that fill the air with joy and wonder for children of all ages. Includes machines and giant wands.
+              </p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="flex flex-col items-center text-center group">
+              <div class="relative mb-6">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="images/customizable_photo_kiosk_650x650.png" alt="Photo Kiosk" class="w-full h-full object-cover"/>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-soft-blossom-700 mb-3">Photo Kiosk</h3>
+              <p class="text-sm text-soft-blossom-700 leading-relaxed mb-4 px-2">
+                Self-service photo station perfect for capturing instant memories with digital sharing capabilities.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="max-w-6xl mx-auto pt-16 md:pt-24 pb-8 md:pb-12 px-6 scroll-mt-20">
+        <div class="text-center mb-16 space-y-4">
+          <h3 class="text-3xl font-bold text-soft-blossom-900">Captured Moments</h3>
+          <p class="text-soft-blossom-500 max-w-lg mx-auto italic">Browse through some guest highlights from recent celebrations.</p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+
+          <!-- Gallery Item 1 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery1.jpg" alt="Party event" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery2.jpg" alt="Balloon animals" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery3.jpg" alt="360 photo booth" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery4.jpg" alt="Birthday party" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/hero.jpg" alt="Balloon column with bubbles" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery6.jpg" alt="Wedding reception" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 7 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/balloon_kitchen_2.jpg" alt="Balloon art" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Gallery Item 8 -->
+          <div class="w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl ring-[10px] ring-white transition-transform hover:scale-[1.03] duration-300">
+            <img src="images/gallery8.jpg" alt="Party memories" class="w-full h-full object-cover">
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 360 Photo Kiosk -->
+      <section class="max-w-6xl mx-auto py-12 md:py-24 px-6">
+        <div class="bg-soft-blossom-50 rounded-[2.5rem] overflow-hidden shadow-sm border border-soft-blossom-100 flex flex-col md:flex-row items-center">
+
+          <!-- Left Side: Text Content -->
+          <div class="p-8 md:p-16 md:w-1/2 space-y-6">
+            <!-- Highlight Badge -->
+            <div class="inline-flex items-center px-4 py-1.5 bg-soft-blossom-200 text-soft-blossom-700 text-xs font-bold uppercase tracking-widest rounded-full">
+              <span class="mr-2">✨</span> Guest Favorite
+            </div>
+
+            <h2 class="text-4xl md:text-5xl font-bold text-soft-blossom-900 leading-[1.1]">
+              Immersive 360 <br/> Photo Kiosk
+            </h2>
+
+            <p class="text-lg text-soft-blossom-700 leading-relaxed max-w-md">
+              Step into the spotlight with our 360 photo kiosk and surrounding booth! A perfect highlight for any event—pair it with our custom balloon styling or let it shine on its own.
+            </p>
+
+            <!-- Action Button -->
+            <div class="pt-6">
+              <a href="tel:+15592897954" class="inline-flex items-center gap-2 bg-soft-blossom-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-soft-blossom-500 transition-all shadow-md">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+                <span>Call (559) 289-7954</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Side: Video Embed -->
+          <div class="md:w-1/2 w-full p-6 md:p-12 flex justify-center bg-soft-blossom-100/30">
+            <div class="relative group w-full max-w-[320px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl ring-[12px] ring-white">
+
+              <!-- 360 Photo Kiosk Video -->
+              <video
+                class="w-full h-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                <source src="images/spiderman.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              <!-- Dynamic Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+
+              <!-- Live Preview Indicator -->
+              <div class="absolute bottom-6 left-6 flex items-center space-x-2 text-white/90">
+                <div class="w-2 h-2 bg-soft-blossom-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-medium uppercase tracking-widest">Live Preview</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Face Painting -->
+      <section class="bg-soft-blossom-100/50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+            <div class="md:w-1/2 relative min-h-[300px]">
+              <img
+                src="images/fresno_fancy.jpg"
+                alt="Kids with face paint and balloon animals"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center items-start">
+              <span class="text-soft-blossom-500 font-bold uppercase tracking-wider text-sm mb-2">Additional Entertainment</span>
+              <h2 class="text-3xl md:text-4xl font-bold text-soft-blossom-900 mb-6">
+                Face Painting and Other Services? Go Here
+              </h2>
+              <p class="text-soft-blossom-700 mb-8 leading-relaxed">
+                I work closely with the top face painting company in Fresno. Please contact them here (OR I can help you put the package together, same cost as calling directly).
+              </p>
+              <a
+                href="https://fresnofancyfaces.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block bg-soft-blossom-600 text-white font-medium px-8 py-3 rounded-full hover:bg-soft-blossom-700 transition-colors shadow-lg shadow-soft-blossom-200"
+              >
+                Fresno Fancy Faces
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-soft-blossom-950 text-white py-16 border-t border-soft-blossom-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h3 class="text-3xl font-bold mb-6">JoecusPocus</h3>
+          <p class="text-soft-blossom-300 mb-8 leading-relaxed">
+            Every kid loves balloons, and so do more adults than I could ever imagine. Please consider my services for your next event, be it a festival, street party or a birthday! I can also be reached at (559) 289-7954 or <a href="mailto:joecuspocus@gmail.com" class="underline text-soft-blossom-200 hover:text-white">joecuspocus@gmail.com</a>
+          </p>
+          <a href="tel:+15592897954" class="inline-flex items-center gap-2 bg-soft-blossom-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-soft-blossom-500 transition-all shadow-md mb-6">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            <span>Call (559) 289-7954</span>
+          </a>
+        </div>
+        <div class="mt-8 pt-6 border-t border-soft-blossom-900 flex flex-col justify-center items-center gap-4">
+          <div class="flex space-x-6">
+            <a href="https://www.facebook.com/joecuspocusfresno/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            <a href="https://www.instagram.com/captainwoot_/" target="_blank" rel="noopener noreferrer" class="text-soft-blossom-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+          </div>
+          <p class="text-soft-blossom-500 text-sm">
+            Copyright <span id="copyright-year"></span> - JoecusPocus
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Main Logic Script -->
+    <script>
+      // --- Initialize Icons ---
+      lucide.createIcons();
+
+      // --- Set Copyright Year ---
+      document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+      // --- Mobile Menu Logic ---
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>
